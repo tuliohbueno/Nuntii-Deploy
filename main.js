@@ -12,7 +12,7 @@
 ////////////////////////////////////////////////////////////////////////////
 
 // constantes
-const apiURL = 'http://unitti-tcc.herokuapp.com/noticias';
+const apiURL = 'https://unitti-tcc.herokuapp.com/noticias';
 
 // funções
 function criaNoticia(titulo, img, resumo, url) {
