@@ -50,8 +50,9 @@ function limpaFeed() {
 }
 
 function adicionaNoticia(noticia) {
-    const feedNoticias = document.getElementById('noticias');
-    feedNoticias.append(noticia)
+    // const feedNoticias = document.getElementById('noticias');
+    // feedNoticias.append(noticia);
+    $("#noticias").append(noticia);
 }
 
 function montaPesquisa(termo) {
@@ -60,56 +61,116 @@ function montaPesquisa(termo) {
 }
 
 function pesquisa(termo) {
-    fetch(montaPesquisa(termo))
-        .then(response => response.json())
-        .then(noticias => {
-            limpaFeed();
 
-            noticias.forEach(item => {
-                const { titulo, urlNoticia, urlImagem, conteudo } = item;
-                const noticia = criaNoticia(titulo, urlImagem, conteudo, urlNoticia);
-                adicionaNoticia(noticia);
-            });
+    $.ajax({url: montaPesquisa(termo), success: function(result){
+        // console.log(result)
+        const data = new Date()
+        const datas = [
+            data.setDate(data.getDate() - 7) && data.toISOString().split('T')[0], //-7d
+            data.setDate(data.getDate() - 8) && data.toISOString().split('T')[0], //-15d
+            data.setDate(data.getDate() - 15) && data.toISOString().split('T')[0] //-30d
+        ];
 
-            const data = new Date()
+        const acumulador = {
+            negativas: [0, 0, 0],
+            positivas: [0, 0, 0],
+            neutras:   [0, 0, 0]
+        };
 
-            // [-7d, -15d, -30d]
-            const datas = [
-                data.setDate(data.getDate() - 7) && data.toISOString().split('T')[0], //-7d
-                data.setDate(data.getDate() - 8) && data.toISOString().split('T')[0], //-15d
-                data.setDate(data.getDate() - 15) && data.toISOString().split('T')[0] //-30d
-            ];
-
-            const acumulador = {
-                negativas: [0, 0, 0],
-                positivas: [0, 0, 0],
-                neutras: [0, 0, 0]
-            };
-
-            for (let index = 0; index < datas.length; index++) {
-                noticias.forEach(noticia => {
-                    const dataNoticia = data.toISOString().split('T')[0]
-                    if (dataNoticia > datas[index]) {
-                        if (noticia.analise > 0) {
-                            acumulador.positivas[index] += 1;
-                        } else if (noticia.analise < 0) {
-                            acumulador.negativas[index] += 1;
-                        } else {
-                            acumulador.neutras[index] += 1;
-                        }
+        for (let index = 0; index < datas.length; index++) {
+                result.forEach(noticia => {
+                const dataNoticia = noticia.data.split('T')[0]
+                if (dataNoticia > datas[index]) {
+                    if (noticia.analise > 0) {
+                        acumulador.positivas[index] += 1;
+                    } else if (noticia.analise < 0) {
+                        acumulador.negativas[index] += 1;
+                    } else {
+                        acumulador.neutras[index] += 1;
                     }
-                });
-            }
+                }
+            });
+        }
 
-            criaGrafico(acumulador);
+        criaGrafico(acumulador);
 
+        result.forEach(element => {
+            $("#noticia").html('');
+            let card = '<div class="row" style="margin:10px 0;"><div class="card text-center">';
+            card += '<div class="card-header">'+element.titulo+'</div>';
+            card += '<img class="card-img-top" src="'+element.urlImagem+'" alt="'+element.titulo+'">';
+            card += '<div class="card-body">';
+            card += '<h5 class="card-title">'+element.titulo+'</h5>';   
+            card += '<p class="card-text">'+element.conteudo+'</p>';   
+            card += '<a href="'+element.urlNoticia+'" class="btn btn-primary">Ver Notícia</a>'; 
+            card += '</div>'; 
+            card += '<div class="card-footer text-muted">2 dias atrás</div>'; 
+            card += '</div>'; 
+            card += '</div>'; 
+            $("#noticia").html(card);
+            const noticia = criaNoticia(element.titulo, element.urlImagem, element.conteudo, element.urlNoticia);
+            adicionaNoticia(card);
+            // console.log(element)
+
+           
         });
+    },
+    });
+
+    /** CODIGO ANTIGGO */
+
+    // fetch(montaPesquisa(termo))
+    //     .then(response => response.json())
+    //     .then(noticias => {
+            // limpaFeed();
+
+    //         noticias.forEach(item => {
+                // const { titulo, urlNoticia, urlImagem, conteudo } = item;
+                // const noticia = criaNoticia(titulo, urlImagem, conteudo, urlNoticia);
+                // adicionaNoticia(noticia);
+    //         });
+
+            // const data = new Date()
+
+            // // [-7d, -15d, -30d]
+            // const datas = [
+            //     data.setDate(data.getDate() - 7) && data.toISOString().split('T')[0], //-7d
+            //     data.setDate(data.getDate() - 8) && data.toISOString().split('T')[0], //-15d
+            //     data.setDate(data.getDate() - 15) && data.toISOString().split('T')[0] //-30d
+            // ];
+
+            // const acumulador = {
+            //     negativas: [0, 0, 0],
+            //     positivas: [0, 0, 0],
+            //     neutras: [0, 0, 0]
+            // };
+
+            // for (let index = 0; index < datas.length; index++) {
+            //     noticias.forEach(noticia => {
+            //         const dataNoticia = data.toISOString().split('T')[0]
+            //         if (dataNoticia > datas[index]) {
+            //             if (noticia.analise > 0) {
+            //                 acumulador.positivas[index] += 1;
+            //             } else if (noticia.analise < 0) {
+            //                 acumulador.negativas[index] += 1;
+            //             } else {
+            //                 acumulador.neutras[index] += 1;
+            //             }
+            //         }
+            //     });
+            // }
+
+            // criaGrafico(acumulador);
+
+    //     });
 }
 
 // 0 por padrão para criar o gráfico zerado
 function criaGrafico(noticias = { positivas: 0, negativas: 0, neutras: 0 }) {
-    console.log(noticias)
+
     let ctx = document.getElementsByClassName("line-chart");
+    
+
     const chartGraph = new Chart(ctx,
         {
             type: 'line',

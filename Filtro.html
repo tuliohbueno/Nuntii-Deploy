@@ -2,8 +2,18 @@
 <html lang=“ptbr”>
 
 <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
     <link rel="stylesheet" type="text/css" href="./CSS/main.css">
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="shortcut icon" href="./IMAGENS//favicon_io (1)/favicon.ico" type="image/x-icon">
+
+
     <title> NUNTII </title>
 
 </head>
@@ -13,27 +23,12 @@
         <main>
             <div class="Header_1">
                 <div class="logo_tipo">
-                    <img src="./IMAGENS/LOGO_TCC.png" height="50" />
+                    <a href="index.html">
+                        <img src="./IMAGENS/LOGO_TCC.png" height="50" />
+                    </a>
                 </div>
-                <div class="Redes_sociais">
-                    <ul>
-                        <li>
-                            <a href=" ">
-                                <img src="./IMAGENS/tw.png" height="" />
-                            </a>
-                        </li>
-                        <li>
-                            <a href=" ">
-                                <img src="./IMAGENS/linkedin.png" height="" />
-                            </a>
-                        </li>
-                        <li>
-                            <a href=" ">
-                                <img src="./IMAGENS/face.png" height="" />
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+
+
             </div>
         </main>
     </header>
@@ -52,8 +47,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="./Graficos.html">
-                            graficos
+                        <a href="./localizacao.html">
+                            localizacao
                         </a>
                     </li>
                 </ul>
@@ -61,18 +56,27 @@
 
         </div>
         <div class="search-box">
-            <input type="text" class="search-text" placeholder="Pesquisar" id="pesq">
+            <!-- <form onsubmit="e  => e.preventDefault();pesquisa(document.getElementById('pesq').value)"> -->
+                <input type="text" class="search-text" placeholder="Pesquisar" id="pesq">
 
-            <div>
-                <img onclick="pesquisa(document.getElementById('pesq').value)" src="./IMAGENS/lupa.png" alt="lupa"
-                    height="20" width="20">
-            </div>
+                <div class="icone-pesquisa">
+                    <!-- <input type="submit" class="icone-pesquisa" hidden> -->
+                    <img onclick="pesquisa(document.getElementById('pesq').value)" class="lupa-pesquisa"
+                        src="./IMAGENS/lupa.png" alt="lupa" height="20" width="20">
+                </input>
+                </div>
 
+            <!-- </form> -->
         </div>
 
         <canvas class="line-chart"></canvas>
-        <ul id="noticias">
-        </ul>
+        <div id="noticias" class="container">
+        </div>
+
+        <!-- JS Code -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
         <!-- JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>

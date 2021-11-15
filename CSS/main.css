@@ -2,7 +2,9 @@ body {
     width: 100%;
     height: 100%;
     margin: 0;
+    background-color:#011635;
 }
+
 ul{
     padding: 0px !important;
 }
@@ -10,6 +12,18 @@ ul{
     width: 100%;
     background-color:#111111;
     height: 60px;
+    padding: 1%;
+}
+.Menu ul a{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: oblique;
+
+    /* border-radius: 8px;
+    background-color: #f5f1f1; */
+
+
+
+
 }
 main {
     margin: 0 auto;
@@ -23,6 +37,8 @@ main {
 }
 .Redes_sociais ul li {
     margin-left: 15px ;
+    background-color: white;
+    border-radius: 8px;
     display: inline-block;
     list-style: none;
 }
@@ -30,16 +46,23 @@ main {
     width: 20%;
     float: right;
 }
+.Redes_sociais ul, a:hover{
+    color: #2c3feb;
+}
+
 .Header_2{
     background-color: #f0ffff;
     width: 980px;
-    margin: 0 auto;
-    padding: 10px 
+    /* margin: 0 auto; */
+    padding: 0px 
 }
 .Menu_links{
-    height: 60px;
-    border-bottom: 3px solid #e0ffff; 
-    background-color: #f0ffff;
+    height: 70px;
+    margin-top: 20px;
+    text-align: center;
+    /* border-bottom: 3px solid #fff;  */
+    background-color:#011635;
+    
 }
 .Menu ul li {
     display: inline-block;
@@ -48,18 +71,21 @@ main {
     height: 35px;
 }
 .Menu ul li:hover {
-    border-bottom: 2px solid #0cd0e2;
+    font-size: 22%;
+    border-bottom: 2px solid #0a1685;
 }
 
 .Menu ul li a:hover{
-    color: #0cd0e2;
+    color: rgb(34, 184, 243);
+    
 }
 
-.Menu ul li a {
-    color: #8b8b8b;
-    text-decoration: none;
-    font-size: 15px;
+.Menu ul  a {
+    color: #f7e4e4;
+    text-decoration: dotted;
+    font-size: 18px;
     text-transform:uppercase;
+    
 }
 .Menu {
     width: 70%;
@@ -85,7 +111,7 @@ main {
 .Coluna_em_100{
     width: 100%;
     float: left;
-    position: relative;
+    /* position: relative; */
 }
 button.slick-prev{
      font-size: 0px;
@@ -144,12 +170,13 @@ li.slick-active button {
 /*  */
 .search-box{
     position: absolute;
-    top: 1%;
+    top: -18px;
     left: 70%;
-    transform: translate(-10% , -10%);
-    background: rgb(155, 192, 155);
+    /* transform: translate(-10% , -10%); */
+    /* background-color: rgb(0, 0, 0); */
+    background-color: white;
     height: 40px;
-    padding: 6px;
+    padding: 6px; 
     border-radius: 20px;
     display: flex;
     justify-content: space-between;
@@ -165,11 +192,17 @@ li.slick-active button {
     line-height: 20px;
     /* width: 0; */
     /* transition: .5s; */
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
+    .line-chart{
+        background-color: #fff;
+        height: 0;
+        width: 200px;
 
-:-webkit-input-placeholder{
- color: #1e3754;
+    }
+
+:-webkt-input-placeholder{
+ color: #542b1e;
 }
 .search-btn{
     width: 40px;
@@ -183,16 +216,30 @@ li.slick-active button {
     
 }
 .search-box:hover > .search-text{
-    width: 240px;
     padding: 0 6px;
 }
 .search-box > .search-btn{
     background: rgb(44, 4, 4);
 }
 
+.cabeçalho > h2{
+    text-align: center;
+    font-size: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: #fff;
+    padding: 50px;
+    color: #011635;
+}
+.cabeçalho p{
+    text-align: center;
+    font-size: 50px;
+    color: rgb(255, 255, 255);
+    font-family: fantasy;
+    padding: 40px;
+}
 .rodape{
     /* background: #111111; */
-    color: #020202;
+    color: #fff;
     font-size: 16px;
     margin: 0%;
     padding: 0%;
@@ -212,6 +259,8 @@ li.slick-active button {
     /* ul, li{
       border: 2px solid red ;  
     } */
+
+
     .titulo-noticia{
        font-size: 16px;
        font-family:Arial, Helvetica, sans-serif;
@@ -220,13 +269,10 @@ li.slick-active button {
        background: #79f393;
     }
     .img-noticia{
-        /* float: left; */
         max-width: 50%;
-        /* border: thin solid; */
         padding: 5px;
         height: 40%;
         object-fit: contain;
-        /* margin: 0px ; */
     }
 
     .resumo-noticia{
@@ -249,4 +295,99 @@ li.slick-active button {
             font-weight: bold;
             border-color: #B1B1B1;
                     
+    }
+
+    /* Rodape */
+    .footer{
+        height: 150px;
+        background: #0b3;
+    }
+    .footer h2{
+        font-size: 20px;
+        font-weight: bold;
+        text-transform: unset;
+        margin-top: 20px;
+        text-align: left;
+        color: white;
+    }
+    
+    .footer p{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 18px;
+        font-weight: lighter;
+        text-align: left;
+        text-transform: unset;
+        color: black;
+        margin-top: 10px;
+    
+    }
+
+
+
+    .localizacao {
+        height: 550px;        
+    }
+
+    
+    .container-localizacao h2{
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 30px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-top:50px;
+        color: #fff;
+        text-align: center;
+        margin-bottom: 12%;
+        
+    }
+
+    .container-localizacao p{
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 18px;
+        font-weight: lighter;
+        text-align: center;
+        text-transform: uppercase;
+        color: #f81717;
+        margin-top: 10px;
+
+    }
+
+    
+    .mapagoogle{
+        margin-top: 30px;
+    }
+
+    /* Tamanhos de icones */
+    .icon-size{
+        font-size: 200px !important; 
+        text-align: center;
+    }
+    .buttom-border-radius{
+        border-radius: 15%;
+        height: 50px;
+        width: auto;
+    }
+
+
+    .card-title{
+        text-align: center;
+    }
+
+    .card-text{
+        font-size: 14px;
+        color: #0a1685;
+    }
+    #artigo{
+        background-color: rgb(28, 29, 28);
+        color: #fff;
+    }
+    .iconify:hover{
+        background-color:none;
+        color: #0a1685;
+        cursor: pointer;
+
+    }
+
+    .contato{
+        margin-bottom: 100%;
     }
